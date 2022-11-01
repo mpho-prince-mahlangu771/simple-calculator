@@ -1,0 +1,15 @@
+.index-container {
+	margin: 100px auto 0 auto;
+	width: 50%;
+	height: 600px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-auto-rows: 1fr 1fr 3fr;
+}
+
+.buttons-area {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-auto-rows: repeat(5, 1fr);
+	grid-gap: 5px;
+}
