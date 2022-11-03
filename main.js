@@ -53,7 +53,7 @@ btns.forEach(button => {
 
 		if (clickedBtnAttribute == "num-btn") {
 			calculationArea.innerHTML = clickedBtnValue;
-			alert("you clicked a number");
+			// alert("you clicked a number");
 		}
 
 
