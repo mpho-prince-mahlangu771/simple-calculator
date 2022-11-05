@@ -31,6 +31,8 @@ const numBtn = document.querySelectorAll(".num-btn");
 // console.log(numBtn);
 
 const btns = document.querySelectorAll(".buttons-area button");
+const btnInputs = [];
+
 btns.forEach(button => {
 	button.addEventListener("click", (e) =>{
 		//pseudocode
@@ -49,16 +51,30 @@ btns.forEach(button => {
 		const clickedBtnAttribute = clickedBtn.getAttribute("class");
 		const clickedBtnValue = clickedBtn.innerHTML; 
 
+		let toPush = "";
+		let numInputs;
+		if (clickedBtnAttribute  == "num-btn") {
+			// toPush += clickedBtnValue;
+			btnInputs.push(clickedBtnValue);
+			// console.log(btnInputs);
+			if (clickedBtnAttribute == "operand-btn") {
+				numInputs = btnInputs.join("");
+				console.log(numInputs);
+				numInputs.forEach(inp => {calculationArea.innerHTML = inp});
+			} else {
+				numInputs = btnInputs.join("");
+				console.log(numInputs);
+				calculationArea.innerHTML = numInputs;
+
+			}
 
 
-		if (clickedBtnAttribute == "num-btn") {
-			calculationArea.innerHTML = clickedBtnValue;
-			// alert("you clicked a number");
-		}
+			
+	
+		} 
 
 
 
-		alert(clickedBtnValue);
 	});
 });
 
@@ -85,9 +101,3 @@ console.log(btns[0].attributes);
 // .attributes[0].nodeName.value
 
 */
-// console.log(btns);
-// console.log(btns[0]);
-// console.log(btns[3]);
-// console.log(btns[3].attributes[0]);
-// console.log(btns[0].attributes[1]);
-// console.log(btns[0].attributes);
