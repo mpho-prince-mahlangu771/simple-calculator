@@ -41,26 +41,21 @@ btns.forEach(button => {
 		} else if (btn_class_Attribute == "operand-btn") {
 			//call corresponding operand method and pass btn_inputs
 			if (output.length == 0) {
-				calculation_area.innerHTML = "";
+				calculation_area.innerHTML = output;
 				
 
 			} else {
-				btn_inputs.push(num_inputs);
-				console.log(btn_inputs)
-				num_inputs = "";
 				count_btn_clicks++;
-				if (count_btn_clicks > 1) {
-					calculation_area.innerHTML = output;
-					
-					
-				} else {
-					output = output + " " + clicked_btn_Value + " ";
-					calculation_area.innerHTML = output;
-					
-				}
-				//clicks operand-btn more than once
-				// output = output + " " + clicked_btn_Value + " ";
-				// calculation_area.innerHTML = output;
+
+				count_btn_clicks > 1 ? calculation_area.innerHTML = output :
+							           output = output + " " + clicked_btn_Value + " ";
+							           calculation_area.innerHTML = output;
+							           btn_inputs.push(num_inputs);
+									   console.log(btn_inputs);
+									   num_inputs = "";
+							          
+							           
+							           
 			}
 			
 			
