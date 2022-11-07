@@ -46,11 +46,15 @@ btns.forEach(button => {
 
 			} else {
 				count_btn_clicks++;
+				
+				num_inputs.length == 0 ? " ":
+										 btn_inputs.push(num_inputs);
+										 console.log(btn_inputs);
+									     num_inputs = "";
 
 				count_btn_clicks > 1 ? calculation_area.innerHTML = output :
 							           output = output + " " + clicked_btn_Value + " ";
 							           calculation_area.innerHTML = output;
-							           btn_inputs.push(num_inputs);
 									   console.log(btn_inputs);
 									   num_inputs = "";
 							          
