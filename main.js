@@ -11,7 +11,7 @@
 */
 
 
-"use strict"
+"use strict";
 
 const calculation_area = document.querySelector(".calculations-area"); 
 const button_area = document.querySelector(".buttons-area");
@@ -38,7 +38,7 @@ btns.forEach(button => {
 
 		} else if (btn_class_Attribute == "operand-btn") {
 			//call corresponding operand method and pass btn_inputs
-			if (num_inputs.length == 0) {
+			if (output.length == 0) {
 				output = " 0 " + clicked_btn_Value;
 				calculation_area.innerHTML = output;
 				
@@ -46,6 +46,7 @@ btns.forEach(button => {
 			} 
 			
 			btn_inputs.push(num_inputs);
+			console.log(num_inputs)
 			num_inputs = ""; 
 			output = output + " " + clicked_btn_Value + " ";
 			calculation_area.innerHTML = output;
