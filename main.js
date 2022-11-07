@@ -19,7 +19,7 @@ const operand_btn = document.querySelector("operand-btn");
 const num_btn = document.querySelectorAll(".num-btn");
 const btns = document.querySelectorAll(".buttons-area button");
 let num_inputs = "";
-let operand_inputs;
+let count_btn_clicks = 0;
 let output = "";
 const btn_inputs = [];
 
@@ -34,22 +34,40 @@ btns.forEach(button => {
 		if (btn_class_Attribute  == "num-btn") {
 			num_inputs += clicked_btn_Value;
 			output += clicked_btn_Value;
+			count_btn_clicks = 0;
 			calculation_area.innerHTML = output;
+
 
 		} else if (btn_class_Attribute == "operand-btn") {
 			//call corresponding operand method and pass btn_inputs
 			if (output.length == 0) {
-				output = " 0 " + clicked_btn_Value;
-				calculation_area.innerHTML = output;
+				calculation_area.innerHTML = "";
 				
 
-			} 
+			} else {
+				btn_inputs.push(num_inputs);
+				console.log(btn_inputs)
+				num_inputs = "";
+				count_btn_clicks++;
+				if (count_btn_clicks > 1) {
+					calculation_area.innerHTML = output;
+					
+					
+				} else {
+					output = output + " " + clicked_btn_Value + " ";
+					calculation_area.innerHTML = output;
+					
+				}
+				//clicks operand-btn more than once
+				// output = output + " " + clicked_btn_Value + " ";
+				// calculation_area.innerHTML = output;
+			}
 			
-			btn_inputs.push(num_inputs);
-			console.log(num_inputs)
-			num_inputs = ""; 
-			output = output + " " + clicked_btn_Value + " ";
-			calculation_area.innerHTML = output;
+			
+			
+			
+			
+			
 			
 
 		} else if (btn_id_Attribute == "delete") {
