@@ -42,7 +42,7 @@ body {
 }
 
 .buttons-area #x-squared ,
-.buttons-area #x-root,
+.buttons-area #delete,
 .buttons-area #modulus,
 .buttons-area #clear-btn {
 	color: #269081;

@@ -1,103 +1,66 @@
 /*acknowledgements - resources I used for help:
 	1. https://www.devhandbook.com/javascript/dom/event-target/
 */
-"use strict"
+
+
 /*
 	naming conversion:
-	cameCase for:
-		variables, function, and class methods 
-*/
-
-/*
-	algorithms for performing calculations:
-	1. wait for user to click a button(listen for clicks)
-	2. when user clicks a button get the button's (elem) className
-	3. while the className is not(equal-sign) do
-	4. if(elem == "num-btn") 
-			v = getElemInnerValue
-		else if(elem == "operand-btn")
-			//check type of operand
-			if(elem == "addition")
-				ans = add(v)
+	under_scores for: variables
+	cameCase for: function
 
 */
 
-const calculationArea = document.querySelector(".calculations-area"); 
-const buttonArea = document.querySelector(".buttons-area");
-const operandBtn = document.querySelector("operand-btn");
-const numBtn = document.querySelectorAll(".num-btn");
-// calculationArea.innerHTML = buttonArea.innerHTML + operand;
-// calculationArea.innerHTML = 
-// console.log(numBtn);
 
+"use strict"
+
+const calculation_area = document.querySelector(".calculations-area"); 
+const button_area = document.querySelector(".buttons-area");
+const operand_btn = document.querySelector("operand-btn");
+const num_btn = document.querySelectorAll(".num-btn");
 const btns = document.querySelectorAll(".buttons-area button");
-const btnInputs = [];
+let num_inputs = "";
+let operand_inputs;
+let output = "";
+const btn_inputs = [];
 
 btns.forEach(button => {
 	button.addEventListener("click", (e) =>{
-		//pseudocode
-		//get 
-
-		
-		//check btn attribute  to check what number it is
-		//get btn num-btn innerHTML value and append to calculationArea 
-		// if(clicked-btn == numBtn) {
-		// 	//check buttons attribute to check button type i.e. num-btn or operand-btn or
-		// 	calculationArea.innerHTML = getClickedBtn.value
-		// }
-
 		//check buttons attribute to check button type i.e. num-btn or operand-btn or
-		const clickedBtn = e.target; 
-		const clickedBtnAttribute = clickedBtn.getAttribute("class");
-		const clickedBtnValue = clickedBtn.innerHTML; 
+		const clicked_btn = e.target; 
+		const clicked_btn_Value = clicked_btn.innerHTML; 
+		const btn_id_Attribute = clicked_btn.getAttribute("id");
+		const btn_class_Attribute = clicked_btn.getAttribute("class");
 
-		let toPush = "";
-		let numInputs;
-		if (clickedBtnAttribute  == "num-btn") {
-			// toPush += clickedBtnValue;
-			btnInputs.push(clickedBtnValue);
-			// console.log(btnInputs);
-			if (clickedBtnAttribute == "operand-btn") {
-				numInputs = btnInputs.join("");
-				console.log(numInputs);
-				numInputs.forEach(inp => {calculationArea.innerHTML = inp});
-			} else {
-				numInputs = btnInputs.join("");
-				console.log(numInputs);
-				calculationArea.innerHTML = numInputs;
+		if (btn_class_Attribute  == "num-btn") {
+			num_inputs += clicked_btn_Value;
+			output += clicked_btn_Value;
+			calculation_area.innerHTML = output;
 
-			}
+		} else if (btn_class_Attribute == "operand-btn") {
+			//call corresponding operand method and pass btn_inputs
+			if (num_inputs.length == 0) {
+				output = " 0 " + clicked_btn_Value;
+				calculation_area.innerHTML = output;
+				
 
-
+			} 
 			
-	
-		} 
+			btn_inputs.push(num_inputs);
+			num_inputs = ""; 
+			output = output + " " + clicked_btn_Value + " ";
+			calculation_area.innerHTML = output;
+			
 
+		} else if (btn_id_Attribute == "delete") {
+			alert("deleting value");
+		} else if (btn_id_Attribute == "clear-btn") {
+			calculation_area.innerHTML = "";
+		} else if (btn_id_Attribute == "equal-sign") {
+			alert("equals to");
+		}
 
 
 	});
 });
 
 
-/*
-lets say in file index.html we have a button:
-	<button class="x-squared" name="test">x^2</button>
-...and in app.js we want to check if 1 of the attributes has a value(test):
-
-	const attrValue = btns[0].attributes.getNamedItem("name").value
-
-if (attrValue == "test") {
-	alert("the attribute has a value of test");
-} 
-
-//used console to test how to access contents of the DOM
-console.log(btns);
-console.log(btns[0]);
-console.log(btns[3]);
-console.log(btns[0].attributes.getNamedItem("name").value);
-console.log(btns[3].attributes[0]);
-console.log(btns[0].attributes[1]);
-console.log(btns[0].attributes);
-// .attributes[0].nodeName.value
-
-*/
